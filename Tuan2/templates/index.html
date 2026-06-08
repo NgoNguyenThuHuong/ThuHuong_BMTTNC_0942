@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BÀI THỰC HÀNH BẢO MẬT THÔNG TIN NÂNG CAO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-main: #f4f6f9;
+            --sidebar-bg: #1e293b;
+            --sidebar-hover: #334155;
+            --primary: #0284c7;
+            --primary-hover: #0369a1;
+            --text-dark: #0f172a;
+            --text-light: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 280px;
+            background-color: var(--sidebar-bg);
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-brand {
+            padding: 24px;
+            text-align: center;
+            border-bottom: 1px solid var(--sidebar-hover);
+        }
+
+        .sidebar-brand img {
+            max-width: 90%;
+            height: auto;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px;
+            border-radius: 6px;
+        }
+
+        .sidebar-brand h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #94a3b8;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 20px 0;
+            flex-grow: 1;
+        }
+
+        .sidebar-menu li a {
+            display: flex;
+            align-items: center;
+            padding: 14px 24px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .sidebar-menu li a:hover, .sidebar-menu li.active a {
+            background-color: var(--sidebar-hover);
+            color: var(--text-light);
+            border-left-color: var(--primary);
+        }
+
+        .sidebar-menu li a i {
+            margin-right: 12px;
+            font-size: 18px;
+            width: 25px;
+            text-align: center;
+        }
+
+        .sidebar-footer {
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #64748b;
+            border-top: 1px solid var(--sidebar-hover);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex-grow: 1;
+            padding: 40px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-title {
+            margin-bottom: 30px;
+        }
+
+        .header-title h1 {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-transform: uppercase;
+        }
+
+        .header-title p {
+            color: #64748b;
+            margin-top: 5px;
+            font-size: 15px;
+        }
+
+        /* Dashboard Grid / Cards */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .cipher-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .cipher-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .cipher-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--primary);
+        }
+
+        .card-icon {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .card-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+            background-color: #f1f5f9;
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .card-btn i {
+            margin-left: 8px;
+            font-size: 12px;
+            transition: transform 0.2s ease;
+        }
+
+        .card-btn:hover {
+            background-color: var(--primary);
+            color: var(--text-light);
+        }
+
+        .card-btn:hover i {
+            transform: translateX(4px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <img src="https://vahc.com.vn/media/k2/items/cache/e3cae036c4e2bea1fb8b65e8b2938a97_M.jpg" alt="HUTECH Logo">
+            <h3>BMTT Nâng Cao</h3>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li class="active"><a href="/"><i class="fa-solid fa-chart-pie"></i>Trang Chủ</a></li>
+            <li><a href="/caesar"><i class="fa-solid fa-key"></i>Caesar Cipher</a></li>
+            <li><a href="/playfair"><i class="fa-solid fa-table"></i>Playfair Cipher</a></li>
+            <li><a href="/railfence"><i class="fa-solid fa-border-top-left"></i>Rail Fence</a></li>
+            <li><a href="/transposition"><i class="fa-solid fa-arrows-left-right"></i>Transposition</a></li>
+            <li><a href="/vigenere"><i class="fa-solid fa-signature"></i>Vigenere Cipher</a></li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <p>HUTECH University</p>
+            <p style="font-weight: 500; margin-top: 2px;">MSSV: 0942</p>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header-title">
+            <h1>Hệ Thống Thực Hành Thuật Toán Mã Hóa</h1>
+            <p>Vui lòng lựa chọn một trong các phương thức mã hóa cổ điển phía dưới để bắt đầu kiểm tra chức năng.</p>
+        </div>
+
+        <div class="grid-container">
+            <div class="cipher-card">
+                <div>
+                    <div class="card-icon"><i class="fa-solid fa-key"></i></div>
+                    <div class="card-title">Caesar Cipher</div>
+                    <div class="card-desc">Thuật toán dịch chuyển các ký tự trong chuỗi văn bản theo một khoảng cách cố định (Key) trong bảng chữ cái.</div>
+                </div>
+                <a href="/caesar" class="card-btn">Thực hiện <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="cipher-card">
+                <div>
+                    <div class="card-icon"><i class="fa-solid fa-table"></i></div>
+                    <div class="card-title">Playfair Cipher</div>
+                    <div class="card-desc">Kỹ thuật mã hóa đối xứng đa ký tự, sử dụng một ma trận khóa kích thước 5x5 để thay thế cặp chữ cái.</div>
+                </div>
+                <a href="/playfair" class="card-btn">Thực hiện <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="cipher-card">
+                <div>
+                    <div class="card-icon"><i class="fa-solid fa-border-top-left"></i></div>
+                    <div class="card-title">Rail Fence Cipher</div>
+                    <div class="card-desc">Mã hóa hoán vị dạng hàng rào, viết thông điệp theo đường chéo ziczac xuống các hàng rồi đọc lại theo từng hàng ngang.</div>
+                </div>
+                <a href="/railfence" class="card-btn">Thực hiện <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="cipher-card">
+                <div>
+                    <div class="card-icon"><i class="fa-solid fa-arrows-left-right"></i></div>
+                    <div class="card-title">Transposition Cipher</div>
+                    <div class="card-desc">Mã hóa hoán vị cột, sắp xếp lại thứ tự vị trí các ký tự của văn bản gốc theo một ma trận dựa trên chiều dài khóa.</div>
+                </div>
+                <a href="/transposition" class="card-btn">Thực hiện <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="cipher-card">
+                <div>
+                    <div class="card-icon"><i class="fa-solid fa-signature"></i></div>
+                    <div class="card-title">Vigenere Cipher</div>
+                    <div class="card-desc">Phương pháp mã hóa văn bản bằng cách sử dụng đan xen nhiều chuỗi mã hóa Caesar khác nhau dựa trên các ký tự của một từ khóa.</div>
+                </div>
+                <a href="/vigenere" class="card-btn">Thực hiện <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
